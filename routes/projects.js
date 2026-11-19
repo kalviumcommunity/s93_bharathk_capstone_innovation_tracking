@@ -47,4 +47,38 @@ router.get('/:id/outputs', async (req, res) => {
   }
 });
 
+// PUT /api/projects/:id - Update project
+router.put('/:id', async (req, res) => {
+  try {
+    const { title, description, department, status } = req.body;
+    const updated = await Project.findByIdAndUpdate(
+      req.params.id,
+      { $set: { title, description, department, status } },
+      { new: true, runValidators: true }
+    ).populate('department', 'name code');
+    if (!updated) {
+      return res.status(404).json({ error: 'Project not found' });
+    }
+    res.json({ message: 'Project updated successfully', project: updated });
+  } catch (err) {
+    console.error('Error updating project:', err);
+    res.status(500).json({ error: 'Failed to update project' });
+  }
+});
+
+// DELETE /api/projects/:id - Delete project
+router.delete('/:id', async (req, res) => {
+  try {
+    const deleted = await Project.findByIdAndDelete(req.params.id);
+    if (!deleted) {
+      return res.status(404).json({ error: 'Project not found' });
+    }
+    await ImpactOutput.deleteMany({ project: req.params.id });
+    res.json({ message: 'Project deleted successfully', id: req.params.id });
+  } catch (err) {
+    console.error('Error deleting project:', err);
+    res.status(500).json({ error: 'Failed to delete project' });
+  }
+});
+
 module.exports = router;
