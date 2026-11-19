@@ -3,57 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innovation Tracking System</title>
+    <title>InnovationTrack - Project & Impact Output Management</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="app-header">
-        <div class="logo">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-            <h1>InnovationTrack</h1>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div>
+            <div class="sidebar-logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+                <h2>InnovationTrack</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-target="dashboard">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    Dashboard
+                </button>
+                <button class="nav-item" data-target="projects">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    Projects
+                </button>
+                <button class="nav-item" data-target="analytics">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                    Analytics
+                </button>
+                <button class="nav-item" data-target="reports">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    Reports
+                </button>
+                <button class="nav-item" data-target="settings">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1 2.83 0l.06-.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                    Settings
+                </button>
+            </nav>
         </div>
-        <nav>
-            <button class="nav-btn active" data-target="dashboard">Dashboard</button>
-            <button class="nav-btn" data-target="projects">Projects</button>
-            <button class="nav-btn" data-target="audit">Audit Log</button>
-        </nav>
-    </header>
+        <div class="sidebar-promo-card">
+            <div class="promo-rocket">🚀</div>
+            <h4>Keep innovating!</h4>
+            <p>Turn ideas into impact.</p>
+        </div>
+    </aside>
 
-    <main class="container">
-        <!-- Dashboard View -->
-        <section id="dashboard" class="view active">
-            <h2>Departmental Impact Summary</h2>
-            <div class="stats-grid" id="analytics-container">
-                <!-- Analytics Cards injected here -->
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+        <!-- Top Navbar -->
+        <header class="top-navbar">
+            <div class="search-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="global-search" placeholder="Search projects, patents, or publications...">
             </div>
-        </section>
 
-        <!-- Projects View -->
-        <section id="projects" class="view">
-            <div class="header-action">
-                <h2>Innovation Projects</h2>
-                <button class="btn primary" onclick="app.showNewProjectModal()">+ New Project</button>
-            </div>
-            <div class="projects-list" id="projects-container">
-                <!-- Project Cards injected here -->
-            </div>
-        </section>
+            <div class="top-nav-right">
+                <div class="view-pills">
+                    <button class="view-pill active" data-target="dashboard">Dashboard</button>
+                    <button class="view-pill" data-target="projects">Projects</button>
+                    <button class="view-pill" data-target="audit">Audit Log</button>
+                </div>
 
-        <!-- Audit Log View -->
-        <section id="audit" class="view">
-            <h2>Audit Trail</h2>
-            <div class="audit-timeline" id="audit-container">
-                <!-- Audit Items injected here -->
+                <button class="notif-btn" title="3 Notifications">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                    </svg>
+                    <span class="notif-badge">3</span>
+                </button>
+
+                <div class="user-profile">
+                    <div class="avatar">JM</div>
+                </div>
             </div>
-        </section>
-    </main>
+        </header>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <!-- 1. DASHBOARD VIEW -->
+            <section id="dashboard" class="view-section active">
+                <div class="greeting-row">
+                    <h1>Welcome back, John! 👋</h1>
+                    <p>Here's your innovation overview for this cycle.</p>
+                </div>
+
+                <!-- 4 Summary Metrics -->
+                <div class="top-metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon-wrap blue">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                        </div>
+                        <div>
+                            <div class="metric-val" id="total-proj-metric">5</div>
+                            <div class="metric-label">Total Projects</div>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon-wrap purple">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                        </div>
+                        <div>
+                            <div class="metric-val" id="total-pat-metric">0</div>
+                            <div class="metric-label">Patents</div>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon-wrap orange">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                        </div>
+                        <div>
+                            <div class="metric-val" id="total-pub-metric">1</div>
+                            <div class="metric-label">Publications (DOIs)</div>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon-wrap green">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                        </div>
+                        <div>
+                            <div class="metric-val" id="total-tech-metric">5</div>
+                            <div class="metric-label">Tech Transfers</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Department Breakdown Section -->
+                <div class="dept-cards-grid" id="analytics-container">
+                    <!-- Dynamic Department Cards -->
+                </div>
+
+                <!-- Bottom Row: Impact Trend & Recent Activity -->
+                <div class="bottom-cards-grid">
+                    <!-- Impact Trend -->
+                    <div class="dashboard-panel">
+                        <div class="panel-header">
+                            <div class="panel-title" style="color: #60a5fa;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                                <span style="color: #ffffff;">Impact Trend</span>
+                            </div>
+                            <div class="time-pills">
+                                <button class="time-pill active">1M</button>
+                                <button class="time-pill">3M</button>
+                                <button class="time-pill">6M</button>
+                                <button class="time-pill">1Y</button>
+                            </div>
+                        </div>
+                        <div style="height: 190px;">
+                            <svg width="100%" height="100%" viewBox="0 0 500 170" preserveAspectRatio="none">
+                                <defs>
+                                    <linearGradient id="pRedGrad" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="#e11d48" stop-opacity="0.3"/>
+                                        <stop offset="100%" stop-color="#e11d48" stop-opacity="0.0"/>
+                                    </linearGradient>
+                                    <linearGradient id="pPurpGrad" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.25"/>
+                                        <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.0"/>
+                                    </linearGradient>
+                                </defs>
+                                <line x1="30" y1="20" x2="490" y2="20" stroke="rgba(255,255,255,0.05)"/>
+                                <text x="15" y="24" fill="#64748b" font-size="10">15</text>
+                                <line x1="30" y1="60" x2="490" y2="60" stroke="rgba(255,255,255,0.05)"/>
+                                <text x="15" y="64" fill="#64748b" font-size="10">10</text>
+                                <line x1="30" y1="100" x2="490" y2="100" stroke="rgba(255,255,255,0.05)"/>
+                                <text x="18" y="104" fill="#64748b" font-size="10">5</text>
+                                <line x1="30" y1="140" x2="490" y2="140" stroke="rgba(255,255,255,0.05)"/>
+                                <text x="18" y="144" fill="#64748b" font-size="10">0</text>
+                                <text x="45" y="160" fill="#94a3b8" font-size="11">Aug</text>
+                                <text x="180" y="160" fill="#94a3b8" font-size="11">Sep</text>
+                                <text x="325" y="160" fill="#94a3b8" font-size="11">Oct</text>
+                                <text x="460" y="160" fill="#94a3b8" font-size="11">Nov</text>
+                                <path d="M 50 120 C 120 120, 150 110, 190 108 C 240 105, 280 105, 335 105 C 390 105, 430 110, 470 112 L 470 140 L 50 140 Z" fill="url(#pPurpGrad)"/>
+                                <path d="M 50 120 C 120 120, 150 110, 190 108 C 240 105, 280 105, 335 105 C 390 105, 430 110, 470 112" fill="none" stroke="#8b5cf6" stroke-width="2.5"/>
+                                <circle cx="50" cy="120" r="3.5" fill="#ffffff" stroke="#8b5cf6" stroke-width="2"/>
+                                <circle cx="190" cy="108" r="3.5" fill="#ffffff" stroke="#8b5cf6" stroke-width="2"/>
+                                <circle cx="335" cy="105" r="3.5" fill="#ffffff" stroke="#8b5cf6" stroke-width="2"/>
+                                <circle cx="470" cy="112" r="3.5" fill="#ffffff" stroke="#8b5cf6" stroke-width="2"/>
+                                <path d="M 50 110 C 110 110, 140 100, 190 98 C 240 95, 270 85, 335 84 C 400 83, 430 87, 470 88 L 470 140 L 50 140 Z" fill="url(#pRedGrad)"/>
+                                <path d="M 50 110 C 110 110, 140 100, 190 98 C 240 95, 270 85, 335 84 C 400 83, 430 87, 470 88" fill="none" stroke="#e11d48" stroke-width="3"/>
+                                <circle cx="50" cy="110" r="4" fill="#ffffff" stroke="#e11d48" stroke-width="2"/>
+                                <circle cx="190" cy="98" r="4" fill="#ffffff" stroke="#e11d48" stroke-width="2"/>
+                                <circle cx="335" cy="84" r="4" fill="#ffffff" stroke="#e11d48" stroke-width="2"/>
+                                <circle cx="470" cy="88" r="4" fill="#ffffff" stroke="#e11d48" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="chart-legend">
+                            <div class="legend-item"><span class="dot red"></span><span>Computer Science</span></div>
+                            <div class="legend-item"><span class="dot purple"></span><span>Bioengineering</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="dashboard-panel">
+                        <div class="panel-header">
+                            <div class="panel-title" style="color: #06b6d4;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                <span style="color: #ffffff;">Recent Activity</span>
+                            </div>
+                            <button class="view-details-link" onclick="app.switchView('audit')">View All &rarr;</button>
+                        </div>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon-wrap pink">🚀</div>
+                                <div>
+                                    <div class="activity-heading">New project added</div>
+                                    <div class="activity-sub">AI for Healthcare</div>
+                                </div>
+                                <div class="activity-time">2h ago</div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon-wrap purple">📄</div>
+                                <div>
+                                    <div class="activity-heading">Publication recorded</div>
+                                    <div class="activity-sub">Deep Learning for Bioengineering</div>
+                                </div>
+                                <div class="activity-time">1d ago</div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon-wrap teal">🔗</div>
+                                <div>
+                                    <div class="activity-heading">Tech transfer updated</div>
+                                    <div class="activity-sub">Smart Health Device</div>
+                                </div>
+                                <div class="activity-time">2d ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. PROJECTS VIEW -->
+            <section id="projects" class="view-section">
+                <div class="projects-header-row">
+                    <h2>Innovation Projects</h2>
+                    <button class="btn-primary-red" onclick="app.showNewProjectModal()">+ New Project</button>
+                </div>
+                <div class="projects-cards-grid" id="projects-container"></div>
+            </section>
+
+            <!-- 3. AUDIT VIEW -->
+            <section id="audit" class="view-section">
+                <div class="projects-header-row">
+                    <h2>Audit Trail</h2>
+                </div>
+                <div class="audit-list-dark" id="audit-container"></div>
+            </section>
+        </main>
+    </div>
 
     <!-- Modals -->
-    <div class="modal-overlay" id="modal-overlay" style="display: none;">
-        <div class="modal" id="modal-content">
-            <!-- Modal Content Injected Here -->
-        </div>
+    <div class="dark-modal-backdrop" id="modal-overlay" style="display: none;">
+        <div class="dark-modal" id="modal-content"></div>
     </div>
 
     <script src="app.js"></script>
