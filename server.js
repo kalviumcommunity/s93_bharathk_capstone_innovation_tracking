@@ -141,6 +141,61 @@ app.post('/api/projects/:id/outputs', async (req, res) => {
   }
 });
 
+// Update Project Details (Title, Description, Department, Status)
+app.put('/api/projects/:id', async (req, res) => {
+  try {
+    const projectId = req.params.id;
+    const { title, description, department_id, status } = req.body;
+
+    const existing = await db.query('SELECT * FROM projects WHERE id = $1', [projectId]);
+    if (existing.rows.length === 0) {
+      return res.status(404).json({ error: 'Project not found' });
+    }
+    const prev = existing.rows[0];
+
+    const updatedRes = await db.query(
+      `UPDATE projects 
+       SET title = COALESCE($1, title),
+           description = COALESCE($2, description),
+           department_id = COALESCE($3, department_id),
+           status = COALESCE($4, status)
+       WHERE id = $5 RETURNING *`,
+      [title, description, department_id, status, projectId]
+    );
+
+    await db.query(
+      'INSERT INTO audit_logs (project_id, action, previous_state, new_state) VALUES ($1, $2, $3, $4)',
+      [projectId, 'PROJECT_UPDATED', prev.status, status || prev.status]
+    );
+
+    res.json({ message: 'Project updated successfully', project: updatedRes.rows[0] });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to update project' });
+  }
+});
+
+// Delete Project
+app.delete('/api/projects/:id', async (req, res) => {
+  try {
+    const projectId = req.params.id;
+
+    await db.query('DELETE FROM impact_outputs WHERE project_id = $1', [projectId]);
+    await db.query('DELETE FROM project_innovators WHERE project_id = $1', [projectId]);
+    await db.query('DELETE FROM audit_logs WHERE project_id = $1', [projectId]);
+
+    const result = await db.query('DELETE FROM projects WHERE id = $1 RETURNING id', [projectId]);
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Project not found' });
+    }
+
+    res.json({ message: 'Project deleted successfully', id: projectId });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to delete project' });
+  }
+});
+
 // 6. Get Audit Logs
 app.get('/api/audit-logs', async (req, res) => {
   try {
