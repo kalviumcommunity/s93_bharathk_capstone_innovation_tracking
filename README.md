@@ -2,6 +2,17 @@
 
 A web application to track university innovation projects, innovators, departments, and their resulting impact outputs (like patents, publications, and tech transfers).
 
+## Mock UX Design
+
+Canva Link:
+https://canva.link/emk21s04eg7gk0r
+
+This mock UX demonstrates the application's primary screens, navigation flow, and major user journeys.
+
+### Video Walkthrough
+Google Drive Link:
+https://drive.google.com/drive/folders/1NS9lBO5Ksw_Z2HoqRt6qzTuV5xSNUwmp?usp=sharing
+
 ## Features
 
 - **Project Management**: Track innovation projects and their current status.
